@@ -1,5 +1,7 @@
 ## Real-time face landmarks detection using face-alignment library
-In this Project we used [face-alignment] (https://github.com/1adrianb/face-alignment) library to detect face landmarks on a realtime video. You can use either camera or any video to do the inference.  
+In this Project we used [face-alignment](https://github.com/1adrianb/face-alignment) library to detect face landmarks on a realtime video. You can use either camera or a video to do the inference.  
+
+<img width="642" alt="Screen Shot 2022-07-11 at 12 24 49 PM" src="https://user-images.githubusercontent.com/42568062/178312052-730ce22e-9f10-461d-aeab-9b5c547de8af.png">
 
 ### How to run
 Instructions to run from bash in linux:
