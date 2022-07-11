@@ -6,6 +6,6 @@ conda activate rtfd_env
 conda install pytorch torchvision cudatoolkit=11.3 -c pytorch
 conda install -c 1adrianb face_alignment
 
-python main.py ./input/v1.MP4
+python main.py
 ## or
-#python main.py
+#python main.py ./input/v1.MP4
