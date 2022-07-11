@@ -15,10 +15,20 @@ class RealTimeFaceDetector:
 
     @timeit
     def _initialize_model(self, device):
+        """
+        this method loads face_alignment model on either cpu or gpu
+        :param device: a string (cpu or gpu)
+        :return: the loaded model
+        """
         return face_alignment.FaceAlignment(face_alignment.LandmarksType._2D, flip_input=False, device=device)
 
     @timeit
     def infer_landmarks(self, frame):
+        """
+        this method gets the frame and detects the face landmarks, and then displays them on the frame
+        :param frame: raw frame
+        :return: frame with face landmarks on it
+        """
         frame_width, frame_height = frame.shape[:2]
 
         preds = self.model.get_landmarks_from_image(frame) or []
@@ -32,11 +42,19 @@ class RealTimeFaceDetector:
         return frame
 
     def _video_fps(self, video_capture):
+        """
+        this method returns fps of each given video
+        """
         major_ver, minor_ver, subminor_ver = cv2.__version__.split('.')
         fps = video_capture.get(cv2.cv.CV_CAP_PROP_FPS) if int(major_ver) < 3 else video_capture.get(cv2.CAP_PROP_FPS)
         return fps
 
     def infer_landmarks_of_video(self, in_path=0, save_path=None):
+        """
+        this method detects face landmarks frame by frame and then saves the processed frames as a video
+        :param in_path: path of input video
+        :param save_path: path for saving the output video
+        """
         if save_path is None:
             in_name = 'camera' if in_path == 0 else in_path.split('/')[-1].split('.')[0]
             save_path = f'{self.save_path}/{in_name}.mp4'
